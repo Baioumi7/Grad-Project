@@ -1,0 +1,8 @@
+at t1 do-com
+docker container exec -it iti-project-spark-master-1 bash
+
+
+
+at terminal2
+docker cp consumer2.py iti-project-spark-master-1:/opt/bitnami/spark 
+docker exec -it iti-project-spark-master-1 bash spark-submit --master spark://spark-master:7077 --packages com.github.jnr:jnr-posix:3.1.15,org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.2 consumer2.py
